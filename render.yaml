@@ -1,9 +1,9 @@
 services:
   - type: web
     name: pdfmcq
-    runtime: static
+    runtime: node
     buildCommand: npm install && npm run build
-    staticPublishPath: dist
+    startCommand: npm run start
     envVars:
       - key: VITE_GEMINI_API_KEY
         sync: false # User must set this manually in Render dashboard
