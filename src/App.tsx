@@ -14,6 +14,10 @@ function App() {
   const [timerMinutes, setTimerMinutes] = useState<number>(0);
 
   const handleFileSelect = async (file: File) => {
+    if (!import.meta.env.VITE_GEMINI_API_KEY) {
+      setError("API Key Error: The Gemini API Key is missing. If you are on Render, ensure the VITE_GEMINI_API_KEY environment variable is set in the dashboard and redeploy with 'Clear Cache'.");
+      return;
+    }
     try {
       setError(null);
       setAppState('generating');
